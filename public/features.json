@@ -1,0 +1,88 @@
+{
+  "sites": [
+    {
+      "name": "holo-taco",
+      "url": "#"
+    },
+    {
+      "name": "mooncat",
+      "url": "#"
+    }
+  ],
+  "pages": [
+    {
+      "key": 1,
+      "site": "holo-taco",
+      "name": "home",
+      "url": "#",
+      "sections": [
+        {
+          "key": 17048253306263,
+          "name": "section-a"
+        },
+        {
+          "key": 17048253306266,
+          "name": "section-b"
+        }
+      ]
+    },
+    {
+      "key": 2,
+      "site": "mooncat",
+      "name": "home",
+      "url": "#",
+      "sections": ["id"]
+    }
+  ],
+  "sections": [
+    {
+      "key": 1,
+      "site": "holo-taco",
+      "name": "section-a",
+      "pages": [
+        {
+          "name": "page name",
+          "page-key": "value"
+        }
+      ],
+      "components": [
+        {
+          "name": "name",
+          "key": "key"
+        }
+      ],
+      "details": "<p>detials</p>"
+    },
+    {
+      "key": 2,
+      "site": "holo-taco",
+      "name": "section-a",
+      "pages": ["id"],
+      "components": ["id"],
+      "details": "details"
+    }
+  ],
+  "components": [
+    {
+      "key": 1,
+      "site": "holo-taco",
+      "name": "product-card",
+      "sections": [
+        {
+          "key": 1,
+          "name": "name"
+        }
+      ],
+      "details": "<p>detials</p>"
+    }
+  ],
+  "history": [
+    {
+      "site:": "holo-taco",
+      "user": "Rasel",
+      "date": "02-03-04",
+      "section": "key",
+      "page": "key"
+    }
+  ]
+}
