@@ -1,0 +1,33 @@
+.min-h-7 {
+  height: auto;
+  min-height: 25px;
+}
+
+.swal2-popup {
+  background-color: rgb(29, 35, 42);
+  color: rgb(166, 173, 186);
+}
+
+.section-history .divider::after,
+.section-history .divider::before {
+  background-color: rgb(213, 213, 213);
+  opacity: 0.5;
+}
+
+@media screen and (min-width: 1024px) {
+  .left-side-menu,
+  .right-side-info {  
+    height: 85vh;
+    overflow-y: scroll;
+  }
+  
+  .modal-box {
+    scrollbar-width: none; 
+  }
+  
+  .left-side-menu::-webkit-scrollbar,
+  .modal-box::-webkit-scrollbar,
+  .right-side-info::-webkit-scrollbar {
+    display: none;
+  }
+}

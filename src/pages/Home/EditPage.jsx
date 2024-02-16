@@ -74,8 +74,8 @@ export default function EditPage({ page }) {
       })
   }
   return (
-    <div className="mt-4 mb-4">
-      <button className="btn btn-outline btn-primary" onClick={() => openEditPageModal()}>Edit</button>
+    <div>
+      <button className="btn btn-outline btn-info ms-2" onClick={() => openEditPageModal()}>Edit Page</button>
       <dialog id={`select-modal-${page.name}`} ref={pageEditModal} className="modal">
         <div className="modal-box">
           <form method="dialog">

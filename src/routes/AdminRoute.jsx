@@ -10,10 +10,8 @@ const PrivateRoute = ({ children }) => {
         return <span className="loading loading-infinity loading-lg"></span>
     }
 
-    if (user?.role) {
+    if (user) {
         return children;
-    } else if (user) {
-        return <Navigate state={location.pathname} to="/not-approved"></Navigate>;
     }
 
     return <Navigate state={location.pathname} to="/login"></Navigate>;

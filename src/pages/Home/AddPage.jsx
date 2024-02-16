@@ -4,7 +4,7 @@ import { FeatureContext } from '../../providers/featuresProvider';
 import CustomSelect from '../Shared/CustomSelect';
 
 export default function AddPage({site}) {
-  const { pages, setPages, sectionsOption } = useContext(FeatureContext);
+  const { pages, setPages, pagesOption, setPagesOption, sectionsOption } = useContext(FeatureContext);
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [defaultOptions, setDefaultOptions] = useState([]);
   const pageName = useRef(null);
@@ -29,18 +29,21 @@ export default function AddPage({site}) {
           console.log(res.data)
           setPages([...pages, page]);
           pageAddModal.current.close();
+          setPagesOption([...pagesOption, { value: page.key, label: page.name }])
         }
       })
   }
 
   const openAddPageModal = () => {
     setDefaultOptions([]);
+    pageName.current.value = '';
+    pageUrl.current.value = '';
     pageAddModal.current.showModal();
   }
 
   return (
     <div>
-      <button className="btn w-full" onClick={() => openAddPageModal()}>Add a page</button>
+      <button className="btn btn-outline btn-primary w-full" onClick={() => openAddPageModal()}>Add a page</button>
       <dialog id="my_modal_3" ref={pageAddModal} className="modal">
         <div className="modal-box">
           <form method="dialog">
