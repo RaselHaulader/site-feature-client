@@ -19,13 +19,11 @@ export default function SingleSection() {
       .then((res) => {
         const data = res.data;
         setSection(data);
-        console.log(data)
         setLoading(false);
       })
   }, [key])
 
   const handleDeleteSection = () => {
-    console.log('section deleted', key)
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -36,12 +34,10 @@ export default function SingleSection() {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        console.log('page deleted')
         axios.post(`http://localhost:5000/deleteSection`, section)
           .then(res => {
             if (res.data.acknowledged) {
               setSectionsOption(sectionsOption.filter(singleSection => singleSection.value != key));
-              console.log(sectionsOption.filter(singleSection => singleSection.value != key))
               navigate(`/${window.location.pathname.split('/')[1]}`);
               Swal.fire({
                 title: "Deleted!",

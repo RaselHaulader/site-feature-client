@@ -19,7 +19,6 @@ export default function AllSection() {
     axios(`http://localhost:5000/page-sections/${key}`)
       .then((res) => {
         const data = res.data;
-        console.log(data)
         setPageSections(data.sections)
         setPage(data)
         setLoading(false)
@@ -37,7 +36,6 @@ export default function AllSection() {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        console.log('page deleted')
         axios.post(`http://localhost:5000/deletePage`, page)
           .then(res => {
             if (res.data.result.acknowledged && res.data.updatedDocuments.acknowledged) {

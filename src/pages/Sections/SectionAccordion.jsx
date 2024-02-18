@@ -18,7 +18,6 @@ export default function SectionAccordion({ section, page }) {
     setLoading(false)
     setSectionData('');
     collapse.current.classList.add('collapse-close');
-    console.log('render accordion')
   }, [page])
 
   const getSectionData = (key, e) => {
@@ -33,9 +32,7 @@ export default function SectionAccordion({ section, page }) {
         const data = res.data;
         setSectionData(data);
         collapse.current.classList.remove('collapse-close')
-        console.log(collapse.current)
         e.target.checked = true;
-        console.log(data)
         setLoading(false);
       })
   }

@@ -23,9 +23,6 @@ export default function AddSectionHistory({ section, user, pageName }) {
   }
 
   const handleTested = () => {
-    console.log(section)
-    console.log(user)
-    console.log(pageName)
     const timeLog = {
       days: days.current.value,
       hour: hour.current.value,
@@ -42,11 +39,9 @@ export default function AddSectionHistory({ section, user, pageName }) {
       date: new Date(),
       comment: comment.current.value
     }
-    console.log(history)
     axios.post('http://localhost:5000/addHistory', history)
       .then(res => {
         if (res.data.acknowledged) {
-          console.log(res.data)
           setConfirm(false)
           modal.current.close();
         }

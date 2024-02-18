@@ -18,7 +18,6 @@ export default function SingleComponent() {
       .then((res) => {
         const data = res.data;
         setComponent(data);
-        console.log(data)
         setLoading(false);
       })
   }, [key])
@@ -34,12 +33,10 @@ export default function SingleComponent() {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        console.log('page deleted')
         axios.post(`http://localhost:5000/deleteComponent`, component)
           .then(res => {
             if (res.data.acknowledged) {
               setComponentsOption(componentsOption.filter(singleComponent => singleComponent.value != key));
-              console.log(componentsOption.filter(singleComponent => singleComponent.value != key))
               navigate(`/${window.location.pathname.split('/')[1]}`);
               Swal.fire({
                 title: "Deleted!",

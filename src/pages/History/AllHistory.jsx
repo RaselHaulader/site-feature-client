@@ -45,11 +45,9 @@ export default function AllHistory() {
       .then((res) => {
         const data = res.data.result;
         let count = res.data.count;
-        console.log({ spentTime: res.data.spentTime })
         res.data.spentTime && setSpentTime(res.data.spentTime);
         data.length === 0 && (count = 0)
         setHistoryCount(count);
-        console.log(data.length)
         setAllHistory(data);
         setPagination(filterData?.page ? filterData?.page : 1, count);
         filterData?.page && setCurrentPaginatedPage(filterData.page)
@@ -59,7 +57,6 @@ export default function AllHistory() {
 
   useEffect(() => {
     setLoading(true);
-    console.log('all history')
     getHistoryData();
     axios(`http://localhost:5000/getAllUser`)
       .then((res) => {
@@ -74,14 +71,10 @@ export default function AllHistory() {
     selectedSection.current.value && (filterData.sectionKey = selectedSection.current.value);
     selectedTime.current.value && (filterData.time = selectedTime.current.value);
     filterData.page = changedToPage ? changedToPage : 1;
-    console.log(filterData)
     getHistoryData(filterData)
   }
 
   const handlePageChange = (changedTo) => {
-    console.log({ changedTo })
-    console.log(paginationPages.length)
-    console.log({ changedTo })
     handleFilter(changedTo);
   }
   return (

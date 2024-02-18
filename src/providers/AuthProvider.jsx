@@ -21,7 +21,6 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
-            console.log(currentUser)
             if (!currentUser) {
                 setUser(currentUser);
                 setLoading(false);
@@ -33,7 +32,6 @@ const AuthProvider = ({ children }) => {
                 }
                 axios.post('http://localhost:5000/saveUser', userData)
                     .then(res => {
-                        console.log({res})
                         if (res.data.acknowledged) {
                             setUser(currentUser);
                         } else if (res.data?.email) {

@@ -16,7 +16,6 @@ export default function AddSections({ site }) {
   const [details, setDetails] = useState('');
 
   const openAddSectionModal = () => {
-    console.log(componentsOption)
     sectionName.current.value = '';
     setDetails('');
     setDefaultOptions([]);
@@ -25,8 +24,6 @@ export default function AddSections({ site }) {
   }
 
   const addSection = () => {
-    console.log(selectedOptions)
-    console.log(sectionName.current.value)
     const section = {
       key: new Date().valueOf(),
       site: site.name,
@@ -38,11 +35,9 @@ export default function AddSections({ site }) {
     if (!sectionName.current.value || !details) {
       return
     }
-    console.log(section)
     axios.post('http://localhost:5000/addSection', section)
       .then(res => {
         if (res.data.acknowledged) {
-          console.log(res.data)
           setSectionsOption([...sectionsOption, { value: section.key, label: section.name }]);
           sectionAddModal.current.close();
         }
@@ -63,13 +58,12 @@ export default function AddSections({ site }) {
               <span className="mb-2">Section name</span>
               <input type="text" ref={sectionName} placeholder="Name" className="input input-bordered" />
             </div>
+            
             <span className="mb-2 block mt-8">Add details of this section</span>
             <ReactQuill theme="snow" value={details} onChange={setDetails} />
             
-            <span className="text-center block mt-4">Select pages of this sections</span>
             <CustomSelect name={"Pages"} options={pagesOption} setSelectedOptions={setSelectedPageOptions} defaultSelectedOptions={defaultPageOptions} />
 
-            <span className="text-center block">Select components of this sections</span>
             <CustomSelect name={"Components"} options={componentsOption} setSelectedOptions={setSelectedOptions} defaultSelectedOptions={defaultOptions} />
             <button onClick={(e) => addSection(e)} className="btn btn-info w-full top-2">Add Section</button>
           </div>

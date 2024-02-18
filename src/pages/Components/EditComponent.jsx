@@ -21,7 +21,6 @@ export default function EditComponent({ component, setComponent }) {
   useEffect(() => {
     setComponentName(component.name);
     const defaultSelected = component.sections?.map((section) => ({ value: parseFloat(section.key), label: section.name }));
-    console.log(defaultSelected)
     setDefaultOptions(defaultSelected);
     setSelectedOptions(component.sections);
   }, [component])
@@ -34,16 +33,12 @@ export default function EditComponent({ component, setComponent }) {
       sections: selectedOptions,
       details: details,
     }
-    console.log({editComponentData})
     const currentSections = component.sections;
     const editSections = editComponentData.sections;
-    console.log({ currentSections });
-    console.log({ editSections });
     function findNotMatchedObjects(arr1, arr2) {
       return arr1.filter(obj1 => !arr2.some(obj2 => obj1.key === obj2.key && obj1.name === obj2.name));
     }
     const addedSections = findNotMatchedObjects(editSections, currentSections);
-    console.log({ addedSections })
 
     let removedSections = []
     if (editSections.length < 1) {
@@ -51,10 +46,8 @@ export default function EditComponent({ component, setComponent }) {
     } else if (editSections.length < currentSections.length || editSections.length === currentSections.length) {
       removedSections = findNotMatchedObjects(currentSections, editSections);
     }
-    console.log({removedSections})
     axios.post('http://localhost:5000/editComponent', {editComponentData, addedSections, removedSections})
     .then(res => {
-      console.log(res)
       if (res.data.acknowledged) {
         let componentIdx;
         componentsOption.forEach((singleComponent, idx) => {
@@ -66,7 +59,6 @@ export default function EditComponent({ component, setComponent }) {
         allComponents[componentIdx] = { value: editComponentData.key, label: editComponentData.name }
         setComponentsOption(allComponents);
         setComponent(editComponentData);
-        console.log(res.data)
         componentEditModal.current.close();
       }
     })
@@ -81,14 +73,13 @@ export default function EditComponent({ component, setComponent }) {
             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
           </form>
           <div>
-            <div className="flex items-center flex-row mb-2 mt-4">
-              <span className="label-text  w-1/3">Component name</span>
+          <div className="flex flex-col mb-2 mt-4 mb-8">
+              <span className="mb-2">Component name</span>
               <input type="text" onChange={e => setComponentName(e.target.value)} value={componentName} placeholder="Name" className="input input-bordered w-2/3 max-w-xs" />
             </div>
-
+            <span className="mb-2 block mt-8">Edit details of this Component</span>
             <ReactQuill theme="snow" value={details} onChange={setDetails} />
 
-            <span className="mt-2">Select section of this component</span>
             <CustomSelect name={"Sections"} options={sectionsOption} setSelectedOptions={setSelectedOptions} defaultSelectedOptions={defaultOptions} />
 
             <button onClick={(e) => handleEdit(e)} className="btn btn-wide top-2">Update Component</button>

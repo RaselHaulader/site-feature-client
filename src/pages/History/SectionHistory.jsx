@@ -8,7 +8,6 @@ export default function SectionHistory({ section }) {
   const [allHistory, setAllHistory] = useState(true);
 
   const openModal = () => {
-    console.log(section)
     modal.current.showModal();
     setLoading(true);
     axios(`http://localhost:5000/getHistory/${section.key}`)

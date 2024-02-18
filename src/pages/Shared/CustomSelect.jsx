@@ -4,10 +4,7 @@ export default function CustomSelect({ name, options, setSelectedOptions, defaul
   const customSelectModal = useRef(null);
   const [checkItem, setCheckItem] = useState([]);
   useEffect(() => {
-    console.log('defaultSelectedOptions', options )
-    console.log('defaultSelectedOptions', defaultSelectedOptions )
     setCheckItem(defaultSelectedOptions?.map(({value}) => value))
-    console.log(defaultSelectedOptions?.map(({value}) => value))
   },[defaultSelectedOptions]);
   
   const openCustomSelectModal = () => {
@@ -31,7 +28,6 @@ export default function CustomSelect({ name, options, setSelectedOptions, defaul
     formData.forEach((value, key) => {
       values.push({key: parseFloat(key), name: options.find(option => option.value == key).label});
     });
-    console.log({values})
     setSelectedOptions(values)
     customSelectModal.current.close();
   }
@@ -46,7 +42,6 @@ export default function CustomSelect({ name, options, setSelectedOptions, defaul
           <div className="mt-4">
             <form onSubmit={handleSelection}>
               {options?.map((option, i) => {
-                console.log(checkItem?.includes(parseFloat(option.value)))
                 return <div key={i} className="form-control">
                   <label className="cursor-pointer label">
                     <span className="label-text">{option.label}</span>

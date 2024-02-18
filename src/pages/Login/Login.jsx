@@ -10,7 +10,6 @@ const Login = () => {
     const navigate = useNavigate();
     const handleGoogleSignIn = () => {
         googleSignIn().then(result => {
-            console.log(result.user);
             // navigate after login
             navigate('/');
         })

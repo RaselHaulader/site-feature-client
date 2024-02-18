@@ -13,13 +13,8 @@ const Home = ({ site }) => {
     const { user } = useContext(AuthContext);
     const { sites, pages, sectionsOption, componentsOption, siteToggle, setSiteToggle } = useContext(FeatureContext);
     useEffect(() => {
-        console.log(currentSite)
-        console.log(site)
         currentSite != site.name && setSiteToggle(siteToggle ? false : true)
-        console.log('toggle useeffect')
-        console.log(siteToggle)
         setCurrentSite(site.name)
-        console.log(site.name)
     }, [site])
     return (
         <>

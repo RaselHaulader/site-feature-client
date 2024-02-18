@@ -13,7 +13,6 @@ export default function EditPage({ page }) {
 
   const openEditPageModal = () => {
     const defaultSelected = page.sections?.map((section) => ({ value: parseFloat(section.key), label: section.name }));
-    console.log(defaultSelected)
     setDefaultOptions(defaultSelected);
     pageEditModal.current.showModal();
   }
@@ -22,14 +21,12 @@ export default function EditPage({ page }) {
     setTitle(page.name);
     setUrl(page.url);
     const defaultSelected = page.sections?.map((section) => ({ value: parseFloat(section.key), label: section.name }));
-    console.log(defaultSelected)
     setDefaultOptions(defaultSelected);
     setSelectedOptions(page.sections);
   }, [page])
 
 
   const handleEditPage = () => {
-    console.log({ selectedOptions })
     const editPageData = {
       key: parseFloat(page.key),
       site: page.site,
@@ -39,13 +36,10 @@ export default function EditPage({ page }) {
     }
     const currentSections = page.sections;
     const editSections = editPageData.sections;
-    console.log({ currentSections });
-    console.log({ editSections });
     function findNotMatchedObjects(arr1, arr2) {
       return arr1.filter(obj1 => !arr2.some(obj2 => obj1.key === obj2.key && obj1.name === obj2.name));
     }
     const addedSections = findNotMatchedObjects(editSections, currentSections);
-    console.log({ addedSections })
 
     let removedSections = []
     if (editSections.length < 1) {
@@ -53,10 +47,8 @@ export default function EditPage({ page }) {
     } else if (editSections.length < currentSections.length || editSections.length === currentSections.length) {
       removedSections = findNotMatchedObjects(currentSections, editSections);
     }
-    console.log({ removedSections })
     axios.post('http://localhost:5000/editPage', { editPageData, addedSections, removedSections })
       .then(res => {
-        console.log(res)
         if (res.data.acknowledged) {
           let pageIdx;
           pages.forEach((singlePage, idx) => {
@@ -67,8 +59,6 @@ export default function EditPage({ page }) {
           const allPages = [...pages];
           allPages[pageIdx] = editPageData;
           setPages(allPages);
-          console.log({ pageIdx })
-          console.log(res.data)
           pageEditModal.current.close();
         }
       })
@@ -91,7 +81,6 @@ export default function EditPage({ page }) {
               <span className="label-text mb-2">Page URL</span>
               <input type="text" onChange={e => setUrl(e.target.value)} value={url} placeholder="Page Name" className="input input-bordered" />
             </div>
-            <span className="mt-2  text-center block">Select sections of this page</span>
             <CustomSelect name={"Sections For Edit"} options={sectionsOption} setSelectedOptions={setSelectedOptions} defaultSelectedOptions={defaultOptions} />
             <button onClick={(e) => handleEditPage(e)} className="btn btn-info w-full top-2">Update</button>
           </div>

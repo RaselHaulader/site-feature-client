@@ -18,7 +18,6 @@ export default function EditSections({ section, setSection }) {
   const openEditSectionModal = () => {
     const defaultComponentSelected = section.components?.map((component) => ({ value: parseFloat(component.key), label: component.name }));
     const defaultPagesSelected = section.pages?.map((page) => ({ value: parseFloat(page.key), label: page.name }));
-    console.log(defaultComponentSelected)
     setDetails(section.details)
     setDefaultComponentOptions(defaultComponentSelected);
     setDefaultPageOptions(defaultPagesSelected);
@@ -31,7 +30,6 @@ export default function EditSections({ section, setSection }) {
     setSectionName(section.name);
     const defaultComponentSelected = section.components?.map((component) => ({ value: parseFloat(component.key), label: component.name }));
     const defaultPagesSelected = section.pages?.map((page) => ({ value: parseFloat(page.key), label: page.name }));
-    console.log(defaultComponentSelected)
     setDefaultPageOptions(defaultPagesSelected);
     setDefaultComponentOptions(defaultComponentSelected);
     setSelectedComponentOptions(section.components);
@@ -56,7 +54,6 @@ export default function EditSections({ section, setSection }) {
     const editedComponents = editedSectionData.components;
     const addedPages = findNotMatchedObjects(editedPages, currentPages);
     const addedComponents = findNotMatchedObjects(editedComponents, currentComponents);
-    console.log({ addedComponents });
     let removedPages = [];
     let removedComponents = [];
     if (editedPages.length < 1) {
@@ -69,12 +66,8 @@ export default function EditSections({ section, setSection }) {
     } else if (editedComponents.length < currentComponents.length || editedComponents.length === currentComponents.length) {
       removedComponents = findNotMatchedObjects(currentComponents, editedComponents);
     }
-    console.log({ editedSectionData })
-    console.log({ removedPages })
-    console.log({ removedComponents })
     axios.post('http://localhost:5000/editSection', { editedSectionData, addedPages, removedPages, addedComponents, removedComponents })
       .then(res => {
-        console.log(res)
         if (res.data.acknowledged) {
           let sectionIdx;
           sectionsOption.forEach((singleSection, idx) => {
@@ -82,13 +75,10 @@ export default function EditSections({ section, setSection }) {
               sectionIdx = idx;
             }
           })
-          console.log(sectionsOption)
           const allSections = [...sectionsOption];
           allSections[sectionIdx] = { value: editedSectionData.key, label: editedSectionData.name }
           setSectionsOption(allSections);
           setSection(editedSectionData);
-          console.log({ sectionIdx })
-          console.log(res.data)
           sectionEditModal.current.close();
         }
       })
@@ -115,7 +105,6 @@ export default function EditSections({ section, setSection }) {
             <span className="text-center block mt-4">Select pages of this sections</span>
             <CustomSelect name={"Pages"} options={pagesOption} setSelectedOptions={setSelectedPageOptions} defaultSelectedOptions={defaultPageOptions} />
 
-            <span className="text-center block">Select components of this sections</span>
             <CustomSelect name={"Components"} options={componentsOption} setSelectedOptions={setSelectedComponentOptions} defaultSelectedOptions={defaultComponentOptions} />
 
             <button onClick={(e) => handleEdit(e)} className="btn btn-info w-full top-2">Update Section</button>

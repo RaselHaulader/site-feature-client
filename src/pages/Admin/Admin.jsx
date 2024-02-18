@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react'
 export default function Admin() {
   const [users, setUsers] = useState([]);
   const updateRole = (user, role) => {
-    console.log(user, role)
     axios.post('http://localhost:5000/updateRole', { user, role })
       .then(res => {
         if (res.data.acknowledged) {
@@ -27,7 +26,6 @@ export default function Admin() {
       .then((res) => {
         const data = res.data;
         setUsers(data)
-        console.log(data)
       })
   }, [])
   return (

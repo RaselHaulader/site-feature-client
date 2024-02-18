@@ -22,11 +22,9 @@ export default function AddPage({ site }) {
     if (!pageName.current.value || !pageUrl.current.value) {
       return
     }
-    console.log(page)
     axios.post('http://localhost:5000/addPage', page)
       .then(res => {
         if (res.data.acknowledged) {
-          console.log(res.data)
           setPages([...pages, page]);
           pageAddModal.current.close();
           setPagesOption([...pagesOption, { value: page.key, label: page.name }])
@@ -60,7 +58,6 @@ export default function AddPage({ site }) {
               <span className="mb-2">Page URL</span>
               <input type="text" ref={pageUrl} placeholder="URL" className="input input-bordered" />
             </div>
-            <span className="mt-2 text-center block">Select sections of this page</span>
             <CustomSelect name={"Sections"} options={sectionsOption} setSelectedOptions={setSelectedOptions} defaultSelectedOptions={defaultOptions} />
             <button onClick={(e) => addPages(e)} className="btn btn-info w-full top-2">Add Page</button>
           </div>
