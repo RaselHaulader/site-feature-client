@@ -66,7 +66,7 @@ export default function SingleComponent() {
           </div>
           <div className="divider"></div>
           <div className='flex flex-col lg:flex-row'>
-            <div className='w-full lg:w-3/4 '>
+            <div className='w-full lg:w-3/4 details'>
               <div dangerouslySetInnerHTML={{ __html: component.details }} />
             </div>
             <div className='w-full border-0 lg:border-l border-slate-700 lg:w-1/4 ps-3'>

@@ -14,17 +14,88 @@
   opacity: 0.5;
 }
 
+.join-item.active {
+  background-color: rgba(59, 59, 205, 0.918);
+}
+
+.ql-active .ql-stroke {
+
+}
+
+.ql-stroke {
+  stroke: rgba(222, 222, 222, 0.811) !important;
+}
+
+.ql-active .ql-stroke {
+  stroke: rgb(0, 55, 255) !important;
+}
+
+.ql-snow .ql-picker.ql-header .ql-picker-label::before, .ql-snow .ql-picker.ql-header .ql-picker-item::before {
+  color: rgba(228, 240, 255, 0.811) !important;
+}
+
+.ql-picker-options {
+  background-color: rgb(31, 31, 31) !important;
+}
+
+.ql-snow .ql-tooltip.ql-editing input[type=text] {
+  background-color: rgba(228, 240, 255, 0.811) !important;
+}
+
+ul, ol {
+  padding-left: 55px;
+}
+
+ul li {
+  list-style: disc;
+}
+
+ol li {
+  list-style: decimal;
+}
+
+.details h1 {
+  font-size: 40px;
+}
+
+.details h2 {
+  font-size: 30px;
+}
+
+.details h3 {
+  font-size: 30px;
+}
+
+.details h4 {
+  font-size: 14px;
+}
+
+.details a {
+  text-decoration: underline;
+  color: rgb(123, 123, 255);
+}
+
+.ql-editor {
+  max-height: 300px;
+  overflow: auto;
+}
+
 @media screen and (min-width: 1024px) {
+
   .left-side-menu,
-  .right-side-info {  
+  .right-side-info {
     height: 85vh;
     overflow-y: scroll;
   }
-  
-  .modal-box {
-    scrollbar-width: none; 
+
+  .modal-box,
+  .ql-editor,
+  .right-side-info,
+  .left-side-menu {
+    scrollbar-width: none;
   }
   
+  .ql-editor::-webkit-scrollbar,
   .left-side-menu::-webkit-scrollbar,
   .modal-box::-webkit-scrollbar,
   .right-side-info::-webkit-scrollbar {

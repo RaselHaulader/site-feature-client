@@ -15,7 +15,7 @@ export default function EditPage({ page }) {
     const defaultSelected = page.sections?.map((section) => ({ value: parseFloat(section.key), label: section.name }));
     console.log(defaultSelected)
     setDefaultOptions(defaultSelected);
-     pageEditModal.current.showModal();
+    pageEditModal.current.showModal();
   }
 
   useEffect(() => {
@@ -29,7 +29,7 @@ export default function EditPage({ page }) {
 
 
   const handleEditPage = () => {
-    console.log({selectedOptions})
+    console.log({ selectedOptions })
     const editPageData = {
       key: parseFloat(page.key),
       site: page.site,
@@ -54,11 +54,11 @@ export default function EditPage({ page }) {
       removedSections = findNotMatchedObjects(currentSections, editSections);
     }
     console.log({ removedSections })
-    axios.post('http://localhost:5000/editPage', {editPageData, addedSections, removedSections})
+    axios.post('http://localhost:5000/editPage', { editPageData, addedSections, removedSections })
       .then(res => {
         console.log(res)
         if (res.data.acknowledged) {
-          let pageIdx; 
+          let pageIdx;
           pages.forEach((singlePage, idx) => {
             if (singlePage.key == page.key) {
               pageIdx = idx;
@@ -67,7 +67,7 @@ export default function EditPage({ page }) {
           const allPages = [...pages];
           allPages[pageIdx] = editPageData;
           setPages(allPages);
-          console.log({pageIdx})
+          console.log({ pageIdx })
           console.log(res.data)
           pageEditModal.current.close();
         }
@@ -82,17 +82,18 @@ export default function EditPage({ page }) {
             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
           </form>
           <div className="mt-4">
-            <div className="flex items-center flex-row mb-2 mt-4">
-              <span className="label-text  w-1/3">Page name</span>
-              <input type="text" onChange={e => setTitle(e.target.value)} value={title} placeholder="Page Name" className="input input-bordered w-2/3 max-w-xs" />
+            <h2 className='text-center p-1 lg:p-2 text-l uppercase bg-indigo-900'>Edit Page</h2>
+            <div className="flex flex-col mb-2 mt-4">
+              <span className="label-text mb-2">Page name</span>
+              <input type="text" onChange={e => setTitle(e.target.value)} value={title} placeholder="Page Name" className="input input-bordered" />
             </div>
-            <div className="flex items-center flex-row mb-2">
-              <span className="label-text w-1/3">Page URL</span>
-              <input type="text" onChange={e => setUrl(e.target.value)} value={url} placeholder="Page Name" className="input input-bordered w-2/3 max-w-xs" />
+            <div className="flex flex-col mb-2 mt-8 mb-8">
+              <span className="label-text mb-2">Page URL</span>
+              <input type="text" onChange={e => setUrl(e.target.value)} value={url} placeholder="Page Name" className="input input-bordered" />
             </div>
-            <span className="mt-2">Select sections of this page</span>
+            <span className="mt-2  text-center block">Select sections of this page</span>
             <CustomSelect name={"Sections For Edit"} options={sectionsOption} setSelectedOptions={setSelectedOptions} defaultSelectedOptions={defaultOptions} />
-            <button onClick={(e) => handleEditPage(e)} className="btn btn-wide top-2">Update</button>
+            <button onClick={(e) => handleEditPage(e)} className="btn btn-info w-full top-2">Update</button>
           </div>
         </div>
       </dialog>

@@ -58,17 +58,20 @@ export default function AddSections({ site }) {
             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
           </form>
           <div>
-            <div className="flex items-center flex-row mb-2 mt-4">
-              <span className="label-text  w-1/3">Section name</span>
-              <input type="text" ref={sectionName} placeholder="Name" className="input input-bordered w-2/3 max-w-xs" />
+            <h2 className='text-center p-1 lg:p-2 text-l uppercase bg-indigo-900'>Add A Section</h2>
+            <div className="flex flex-col mb-2 mt-4">
+              <span className="mb-2">Section name</span>
+              <input type="text" ref={sectionName} placeholder="Name" className="input input-bordered" />
             </div>
+            <span className="mb-2 block mt-8">Add details of this section</span>
             <ReactQuill theme="snow" value={details} onChange={setDetails} />
-            <span className="mt-2">Select pages of this sections</span>
+            
+            <span className="text-center block mt-4">Select pages of this sections</span>
             <CustomSelect name={"Pages"} options={pagesOption} setSelectedOptions={setSelectedPageOptions} defaultSelectedOptions={defaultPageOptions} />
 
-            <span className="mt-2">Select components of this sections</span>
+            <span className="text-center block">Select components of this sections</span>
             <CustomSelect name={"Components"} options={componentsOption} setSelectedOptions={setSelectedOptions} defaultSelectedOptions={defaultOptions} />
-            <button onClick={(e) => addSection(e)} className="btn btn-wide top-2">Add Section</button>
+            <button onClick={(e) => addSection(e)} className="btn btn-info w-full top-2">Add Section</button>
           </div>
         </div>
       </dialog>

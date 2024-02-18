@@ -37,7 +37,7 @@ export default function CustomSelect({ name, options, setSelectedOptions, defaul
   }
   return (
     <div className="mt-4 mb-4">
-      <button className="btn w-full" onClick={() => openCustomSelectModal()}>Select {name}</button>
+      <button className="btn btn-outline btn-info w-full" onClick={() => openCustomSelectModal()}>Select {name}</button>
       <dialog id={`select-modal-${name}`} ref={customSelectModal} className="modal">
         <div className="modal-box">
           <form method="dialog">
@@ -55,7 +55,7 @@ export default function CustomSelect({ name, options, setSelectedOptions, defaul
                   <div className="divider"></div>
                 </div>
               })}
-              <button type="submit" className="btn btn-active w-full top-2">Select</button>
+              <button type="submit" className="btn btn-outline btn-info w-full top-2">Select</button>
             </form>
           </div>
         </div>
