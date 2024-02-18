@@ -42,7 +42,8 @@
   background-color: rgba(228, 240, 255, 0.811) !important;
 }
 
-ul, ol {
+.details ul,
+.details ol {
   padding-left: 55px !important;
 }
 
