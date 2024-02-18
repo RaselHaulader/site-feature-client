@@ -14,7 +14,7 @@ export default function SingleComponent() {
   const key = searchParams.get('key');
   useEffect(() => {
     setLoading(true);
-    axios(`http://localhost:5000/getComponent/${key}`)
+    axios(`https://site-features.onrender.com/getComponent/${key}`)
       .then((res) => {
         const data = res.data;
         setComponent(data);
@@ -33,7 +33,7 @@ export default function SingleComponent() {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.post(`http://localhost:5000/deleteComponent`, component)
+        axios.post(`https://site-features.onrender.com/deleteComponent`, component)
           .then(res => {
             if (res.data.acknowledged) {
               setComponentsOption(componentsOption.filter(singleComponent => singleComponent.value != key));

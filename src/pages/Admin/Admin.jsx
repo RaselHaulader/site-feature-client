@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 export default function Admin() {
   const [users, setUsers] = useState([]);
   const updateRole = (user, role) => {
-    axios.post('http://localhost:5000/updateRole', { user, role })
+    axios.post('https://site-features.onrender.com/updateRole', { user, role })
       .then(res => {
         if (res.data.acknowledged) {
           let userIdx;
@@ -22,7 +22,7 @@ export default function Admin() {
       })
   }
   useEffect(() => {
-    axios(`http://localhost:5000/getAllUser`)
+    axios(`https://site-features.onrender.com/getAllUser`)
       .then((res) => {
         const data = res.data;
         setUsers(data)
@@ -40,14 +40,14 @@ export default function Admin() {
                   <span>{user.name} - {user.email} {user.role && `(${user.role})`}</span>
                 </span>
                 <div>
-                  <button 
-                    onClick={() => updateRole(user, user.role === 'user' ? '' : 'user')} 
+                  <button
+                    onClick={() => updateRole(user, user.role === 'user' ? '' : 'user')}
                     className={`btn btn-outline m-2 ${user.role === 'user' ? 'btn-error' : 'btn-success'} min-h-7`}
                   >
                     {user.role === 'user' ? 'Removed' : 'Approved'} as User
                   </button>
-                  <button 
-                    onClick={() => updateRole(user, user.role === 'admin' ? '' : 'admin')} 
+                  <button
+                    onClick={() => updateRole(user, user.role === 'admin' ? '' : 'admin')}
                     className={`btn btn-outline m-2 ${user.role === 'admin' ? 'btn-error' : 'btn-success'} min-h-7`}
                   >
                     {user.role === 'admin' ? 'Removed' : 'Approved'} as Admin

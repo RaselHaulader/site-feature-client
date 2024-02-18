@@ -46,22 +46,22 @@ export default function EditComponent({ component, setComponent }) {
     } else if (editSections.length < currentSections.length || editSections.length === currentSections.length) {
       removedSections = findNotMatchedObjects(currentSections, editSections);
     }
-    axios.post('http://localhost:5000/editComponent', {editComponentData, addedSections, removedSections})
-    .then(res => {
-      if (res.data.acknowledged) {
-        let componentIdx;
-        componentsOption.forEach((singleComponent, idx) => {
-          if (singleComponent.value == component.key) {
-            componentIdx = idx;
-          }
-        })
-        const allComponents = [...componentsOption];
-        allComponents[componentIdx] = { value: editComponentData.key, label: editComponentData.name }
-        setComponentsOption(allComponents);
-        setComponent(editComponentData);
-        componentEditModal.current.close();
-      }
-    })
+    axios.post('https://site-features.onrender.com/editComponent', { editComponentData, addedSections, removedSections })
+      .then(res => {
+        if (res.data.acknowledged) {
+          let componentIdx;
+          componentsOption.forEach((singleComponent, idx) => {
+            if (singleComponent.value == component.key) {
+              componentIdx = idx;
+            }
+          })
+          const allComponents = [...componentsOption];
+          allComponents[componentIdx] = { value: editComponentData.key, label: editComponentData.name }
+          setComponentsOption(allComponents);
+          setComponent(editComponentData);
+          componentEditModal.current.close();
+        }
+      })
   }
   return (
     <div>
@@ -73,7 +73,7 @@ export default function EditComponent({ component, setComponent }) {
             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
           </form>
           <div>
-          <div className="flex flex-col mb-2 mt-4 mb-8">
+            <div className="flex flex-col mb-2 mt-4 mb-8">
               <span className="mb-2">Component name</span>
               <input type="text" onChange={e => setComponentName(e.target.value)} value={componentName} placeholder="Name" className="input input-bordered w-2/3 max-w-xs" />
             </div>

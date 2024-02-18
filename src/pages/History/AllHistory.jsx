@@ -41,7 +41,7 @@ export default function AllHistory() {
   const getHistoryData = (filterData) => {
     setLoading(true);
     setSpentTime('');
-    axios.post(`http://localhost:5000/getAllHistory`, { ...filterData, site: currentSite })
+    axios.post(`https://site-features.onrender.com/getAllHistory`, { ...filterData, site: currentSite })
       .then((res) => {
         const data = res.data.result;
         let count = res.data.count;
@@ -58,7 +58,7 @@ export default function AllHistory() {
   useEffect(() => {
     setLoading(true);
     getHistoryData();
-    axios(`http://localhost:5000/getAllUser`)
+    axios(`https://site-features.onrender.com/getAllUser`)
       .then((res) => {
         const data = res.data;
         setUsers(data)

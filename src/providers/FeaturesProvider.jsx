@@ -16,7 +16,7 @@ const FeaturesProvider = ({ children }) => {
   const [siteToggle, setSiteToggle] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:5000/sites')
+    fetch('https://site-features.onrender.com/sites')
       .then((res) => res.json())
       .then((data) => {
         setSites(data)
@@ -25,13 +25,13 @@ const FeaturesProvider = ({ children }) => {
     const site = window.location.pathname.split('/')[1];
     if (site) {
       setCurrentSite(site);
-      axios(`http://localhost:5000/pages/${site}`)
+      axios(`https://site-features.onrender.com/pages/${site}`)
         .then(res => {
           const data = res.data;
           setPages(data)
         })
 
-      axios(`http://localhost:5000/pages-options/${site}`)
+      axios(`https://site-features.onrender.com/pages-options/${site}`)
         .then(res => {
           const data = res.data;
           const options = data.map((option) => {
@@ -40,7 +40,7 @@ const FeaturesProvider = ({ children }) => {
           setPagesOption(options);
         })
 
-      axios(`http://localhost:5000/sections-options/${site}`)
+      axios(`https://site-features.onrender.com/sections-options/${site}`)
         .then(res => {
           const data = res.data;
           const options = data.map((option) => {
@@ -49,7 +49,7 @@ const FeaturesProvider = ({ children }) => {
           setSectionsOption(options);
         })
 
-      axios(`http://localhost:5000/component-options/${site}`)
+      axios(`https://site-features.onrender.com/component-options/${site}`)
         .then(res => {
           const data = res.data;
           const options = data.map((option) => {

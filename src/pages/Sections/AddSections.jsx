@@ -35,7 +35,7 @@ export default function AddSections({ site }) {
     if (!sectionName.current.value || !details) {
       return
     }
-    axios.post('http://localhost:5000/addSection', section)
+    axios.post('https://site-features.onrender.com/addSection', section)
       .then(res => {
         if (res.data.acknowledged) {
           setSectionsOption([...sectionsOption, { value: section.key, label: section.name }]);
@@ -58,10 +58,10 @@ export default function AddSections({ site }) {
               <span className="mb-2">Section name</span>
               <input type="text" ref={sectionName} placeholder="Name" className="input input-bordered" />
             </div>
-            
+
             <span className="mb-2 block mt-8">Add details of this section</span>
             <ReactQuill theme="snow" value={details} onChange={setDetails} />
-            
+
             <CustomSelect name={"Pages"} options={pagesOption} setSelectedOptions={setSelectedPageOptions} defaultSelectedOptions={defaultPageOptions} />
 
             <CustomSelect name={"Components"} options={componentsOption} setSelectedOptions={setSelectedOptions} defaultSelectedOptions={defaultOptions} />

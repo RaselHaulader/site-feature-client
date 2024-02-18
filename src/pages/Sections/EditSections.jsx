@@ -66,7 +66,7 @@ export default function EditSections({ section, setSection }) {
     } else if (editedComponents.length < currentComponents.length || editedComponents.length === currentComponents.length) {
       removedComponents = findNotMatchedObjects(currentComponents, editedComponents);
     }
-    axios.post('http://localhost:5000/editSection', { editedSectionData, addedPages, removedPages, addedComponents, removedComponents })
+    axios.post('https://site-features.onrender.com/editSection', { editedSectionData, addedPages, removedPages, addedComponents, removedComponents })
       .then(res => {
         if (res.data.acknowledged) {
           let sectionIdx;

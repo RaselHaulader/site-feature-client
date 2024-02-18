@@ -10,7 +10,7 @@ export default function SectionHistory({ section }) {
   const openModal = () => {
     modal.current.showModal();
     setLoading(true);
-    axios(`http://localhost:5000/getHistory/${section.key}`)
+    axios(`https://site-features.onrender.com/getHistory/${section.key}`)
       .then((res) => {
         const data = res.data;
         setAllHistory(data);

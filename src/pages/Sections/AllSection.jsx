@@ -16,7 +16,7 @@ export default function AllSection() {
   const { setPages, pages, pagesOption, setPagesOption } = useContext(FeatureContext);
   useEffect(() => {
     setLoading(true)
-    axios(`http://localhost:5000/page-sections/${key}`)
+    axios(`https://site-features.onrender.com/page-sections/${key}`)
       .then((res) => {
         const data = res.data;
         setPageSections(data.sections)
@@ -36,7 +36,7 @@ export default function AllSection() {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.post(`http://localhost:5000/deletePage`, page)
+        axios.post(`https://site-features.onrender.com/deletePage`, page)
           .then(res => {
             if (res.data.result.acknowledged && res.data.updatedDocuments.acknowledged) {
               setPages(pages.filter(singlePage => singlePage.key != key));

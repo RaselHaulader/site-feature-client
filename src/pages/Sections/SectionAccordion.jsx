@@ -27,7 +27,7 @@ export default function SectionAccordion({ section, page }) {
       collapse.current.classList.add('collapse-close');
     }
     !dataExist && setLoading(true);
-    !dataExist && axios(`http://localhost:5000/getSection/${key}`)
+    !dataExist && axios(`https://site-features.onrender.com/getSection/${key}`)
       .then((res) => {
         const data = res.data;
         setSectionData(data);

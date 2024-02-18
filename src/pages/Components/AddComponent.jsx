@@ -31,7 +31,7 @@ export default function AddComponent({ site }) {
     if (!componentName.current.value || !details) {
       return
     }
-    axios.post('http://localhost:5000/addComponent', component)
+    axios.post('https://site-features.onrender.com/addComponent', component)
       .then(res => {
         if (res.data.acknowledged) {
           setComponentsOption([...componentsOption, { value: component.key, label: component.name }]);
@@ -55,7 +55,7 @@ export default function AddComponent({ site }) {
               <span className="mb-2">Component name</span>
               <input type="text" ref={componentName} placeholder="Name" className="input input-bordered" />
             </div>
-            
+
             <span className="mb-2 block mt-8">Add details of this component</span>
             <ReactQuill theme="snow" value={details} onChange={setDetails} />
 

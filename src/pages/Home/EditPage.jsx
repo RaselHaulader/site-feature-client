@@ -47,7 +47,7 @@ export default function EditPage({ page }) {
     } else if (editSections.length < currentSections.length || editSections.length === currentSections.length) {
       removedSections = findNotMatchedObjects(currentSections, editSections);
     }
-    axios.post('http://localhost:5000/editPage', { editPageData, addedSections, removedSections })
+    axios.post('https://site-features.onrender.com/editPage', { editPageData, addedSections, removedSections })
       .then(res => {
         if (res.data.acknowledged) {
           let pageIdx;

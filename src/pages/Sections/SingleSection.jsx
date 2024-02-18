@@ -15,7 +15,7 @@ export default function SingleSection() {
   const key = searchParams.get('key');
   useEffect(() => {
     setLoading(true);
-    axios(`http://localhost:5000/getSection/${key}`)
+    axios(`https://site-features.onrender.com/getSection/${key}`)
       .then((res) => {
         const data = res.data;
         setSection(data);
@@ -34,7 +34,7 @@ export default function SingleSection() {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.post(`http://localhost:5000/deleteSection`, section)
+        axios.post(`https://site-features.onrender.com/deleteSection`, section)
           .then(res => {
             if (res.data.acknowledged) {
               setSectionsOption(sectionsOption.filter(singleSection => singleSection.value != key));

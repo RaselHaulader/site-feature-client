@@ -39,7 +39,7 @@ export default function AddSectionHistory({ section, user, pageName }) {
       date: new Date(),
       comment: comment.current.value
     }
-    axios.post('http://localhost:5000/addHistory', history)
+    axios.post('https://site-features.onrender.com/addHistory', history)
       .then(res => {
         if (res.data.acknowledged) {
           setConfirm(false)

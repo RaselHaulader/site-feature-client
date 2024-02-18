@@ -22,7 +22,7 @@ export default function AddPage({ site }) {
     if (!pageName.current.value || !pageUrl.current.value) {
       return
     }
-    axios.post('http://localhost:5000/addPage', page)
+    axios.post('https://site-features.onrender.com/addPage', page)
       .then(res => {
         if (res.data.acknowledged) {
           setPages([...pages, page]);
