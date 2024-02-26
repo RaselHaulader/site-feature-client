@@ -102,7 +102,6 @@ export default function EditSections({ section, setSection }) {
             <span className="mb-2 block mt-4">Edit details of this section</span>
             <ReactQuill theme="snow" value={details} onChange={setDetails} />
 
-            <span className="text-center block mt-4">Select pages of this sections</span>
             <CustomSelect name={"Pages"} options={pagesOption} setSelectedOptions={setSelectedPageOptions} defaultSelectedOptions={defaultPageOptions} />
 
             <CustomSelect name={"Components"} options={componentsOption} setSelectedOptions={setSelectedComponentOptions} defaultSelectedOptions={defaultComponentOptions} />
