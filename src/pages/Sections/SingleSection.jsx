@@ -64,7 +64,7 @@ export default function SingleSection() {
         <div className="divider"></div>
         <p className='text-right mb-2'><SectionHistory section={section} /></p>
         <div className='flex flex-col lg:flex-row'>
-          <div className='w-full lg:w-3/5 details'>
+          <div className='w-full lg:w-3/5 details px-2'>
             <div dangerouslySetInnerHTML={{ __html: section.details }} />
           </div>
           {section.pages?.length > 0 && <div className='w-full border-0 lg:border-l border-slate-700 lg:w-1/5 ps-3'>

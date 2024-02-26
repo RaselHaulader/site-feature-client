@@ -81,6 +81,12 @@ ol li {
   overflow: auto;
 }
 
+ul.menu {
+  max-height: 250px;
+  flex-wrap: nowrap;
+  overflow: auto;
+}
+
 @media screen and (min-width: 1024px) {
 
   .left-side-menu,

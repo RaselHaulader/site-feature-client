@@ -2,7 +2,6 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../Shared/Navbar/Navbar";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
@@ -29,7 +28,7 @@ const Login = () => {
     return (
         <div>
             <Navbar></Navbar>
-            <p className="text-center mt-4">Do not have an account <button onClick={() => handleGoogleSignIn()} className="bg-violet-600 font-bold">Google SignIn</button></p>
+            <p className="text-center mt-4"><button onClick={() => handleGoogleSignIn()} className="bg-violet-600 font-bold p-2 mx-4 rounded-lg">Google SignIn</button></p>
         </div>
     );
 };

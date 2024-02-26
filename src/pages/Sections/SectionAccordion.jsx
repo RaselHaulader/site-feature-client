@@ -48,7 +48,7 @@ export default function SectionAccordion({ section, page }) {
           <div className="divider mt-0 mb-1"></div>
           <p className='text-right pe-4 mb-3'><NavLink className='px-2 py-1 min-h-7 btn btn-outline btn-info' to={`/${currentSite}/section/${currentSite + section.key}?key=${section.key}`}> Section</NavLink> <AddSectionHistory section={section} user={{ userName: user.displayName, userEmail: user.email }} pageName={page.name} /> <SectionHistory section={section} /> </p>
           <div className='flex flex-col lg:flex-row'>
-            <div className='w-full lg:w-3/5 details'>
+            <div className='w-full lg:w-3/5 pe-2 details'>
               <div dangerouslySetInnerHTML={{ __html: sectionData.details }} />
             </div>
             {sectionData.pages?.length > 0 && <div className='w-full border-0 lg:border-l border-slate-700 lg:w-1/5 ps-3'>
