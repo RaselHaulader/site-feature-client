@@ -82,7 +82,7 @@ ol li {
 }
 
 ul.menu {
-  max-height: 250px;
+  max-height: 220px;
   flex-wrap: nowrap;
   overflow: auto;
 }

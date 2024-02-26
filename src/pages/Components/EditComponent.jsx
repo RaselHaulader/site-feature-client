@@ -75,14 +75,14 @@ export default function EditComponent({ component, setComponent }) {
           <div>
             <div className="flex flex-col mb-2 mt-4 mb-8">
               <span className="mb-2">Component name</span>
-              <input type="text" onChange={e => setComponentName(e.target.value)} value={componentName} placeholder="Name" className="input input-bordered w-2/3 max-w-xs" />
+              <input type="text" onChange={e => setComponentName(e.target.value)} value={componentName} placeholder="Name" className="input input-bordered" />
             </div>
             <span className="mb-2 block mt-8">Edit details of this Component</span>
             <ReactQuill theme="snow" value={details} onChange={setDetails} />
 
             <CustomSelect name={"Sections"} options={sectionsOption} setSelectedOptions={setSelectedOptions} defaultSelectedOptions={defaultOptions} />
 
-            <button onClick={(e) => handleEdit(e)} className="btn btn-wide top-2">Update Component</button>
+            <button onClick={(e) => handleEdit(e)} className="btn btn-info w-full top-2">Update Component</button>
           </div>
         </div>
       </dialog>
