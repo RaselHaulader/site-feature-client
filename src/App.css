@@ -4,8 +4,10 @@
 }
 
 .btn {
-  min-height: 15px;
-  font-size: 12x;
+  max-height: 50px!important;
+  min-height: 35px !important;
+  height: auto !important;
+  font-size: 12px !important;
 }
 
 .swal2-popup {
@@ -61,7 +63,7 @@ ol li {
 }
 
 h1,h2,h3,h4,h5 {
-  font-weight: bold;
+  font-weight: 700 !important;
 }
 
 .details h1 {
