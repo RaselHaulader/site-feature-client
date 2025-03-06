@@ -10,7 +10,7 @@ export default function Landing() {
     <Navbar sites={sites}></Navbar>
     <h1 className='text-center my-8'>
       {
-        !user ? 'Please Login First' : 'Site features'
+        !user ? 'Please Login First' : 'Please select a store'
       }
     </h1>
   </>

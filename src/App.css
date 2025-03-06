@@ -1,6 +1,11 @@
 .min-h-7 {
   height: auto;
-  min-height: 25px;
+  min-height: 15px;
+}
+
+.btn {
+  min-height: 15px;
+  font-size: 12x;
 }
 
 .swal2-popup {
@@ -55,22 +60,29 @@ ol li {
   list-style: decimal;
 }
 
+h1,h2,h3,h4,h5 {
+  font-weight: bold;
+}
+
 .details h1 {
-  font-size: 40px;
+  font-size: 30px;
 }
 
 .details h2 {
-  font-size: 30px;
+  font-size: 25px;
 }
 
 .details h3 {
-  font-size: 30px;
+  font-size: 20px;
 }
 
 .details h4 {
   font-size: 14px;
 }
 
+body {
+  font-size: 14px;
+}
 .details a {
   text-decoration: underline;
   color: rgb(123, 123, 255);

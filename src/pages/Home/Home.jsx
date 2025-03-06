@@ -13,6 +13,7 @@ const Home = ({ site }) => {
     const { user } = useContext(AuthContext);
     const { sites, pages, sectionsOption, componentsOption, siteToggle, setSiteToggle } = useContext(FeatureContext);
     useEffect(() => {
+        console.log('render home')
         currentSite != site.name && setSiteToggle(siteToggle ? false : true)
         setCurrentSite(site.name)
     }, [site])
